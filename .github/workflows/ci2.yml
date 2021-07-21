@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List Files
-        run:
+        run: |
           pwd
           ls
       - name: Simple JS Action
