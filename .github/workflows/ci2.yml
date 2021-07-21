@@ -10,10 +10,17 @@ jobs:
   run-actions-job:
     runs-on: ubuntu-latest
     steps:
-      - name: List Files
+      - name: List Files before checkout my repo
         run: |
           pwd
-          ls
+          ls -la
+      - name: Checkout my repo
+        uses: actions/checkout@v2
+      - name: List Files after checkout my repo
+        run: |
+          pwd
+          ls -la
+
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1.1
