@@ -1,0 +1,18 @@
+name: My Test C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-bash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my first step - echoing
+        run: echo "This is an echo testing"
+      - name: my second step
+        run: |
+          node -v
+          npm -v
