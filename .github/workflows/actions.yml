@@ -1,0 +1,18 @@
+name: My Own Docker CI 
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-bash-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my first step - echoing
+        run: echo "I am about to run command from within container using my own iamge!"
+      - name: my real run docker container
+        uses: ./github/actions/hello-docker
+        with:
+          who-to-greet: "MyTestingWorld"
