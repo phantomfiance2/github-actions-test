@@ -1,4 +1,4 @@
-name: My Test C/C++ CI
+name: My First CI 
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my first step - echoing
-        run: echo "This is an echo testing!!!"
+        run: eccho "This is an echo testing!!!"
       - name: my second step
         run: |
           node -v
