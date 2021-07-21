@@ -7,11 +7,11 @@ on:
     branches: [ main ]
 
 jobs:
-  run-bash:
+  run-bash-job:
     runs-on: ubuntu-latest
     steps:
       - name: my first step - echoing
-        run: echo "This is an echo testing"
+        run: echo "This is an echo testing!!!"
       - name: my second step
         run: |
           node -v
