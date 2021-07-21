@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: my first step - echoing
         run: echo "I am about to run command from within container using my own iamge!"
+      - name: check out my repo
+        uses: actions/checkout@v2
       - name: my real run docker container
         uses: ./.github/actions/hello-docker
         with:
