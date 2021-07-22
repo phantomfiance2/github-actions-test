@@ -1,0 +1,13 @@
+version: "3"
+services:
+  local:
+    build: .
+    command: tail -f /dev/null
+    volumes:
+      - $PWD/bin:/debugging
+    ports:
+      - "5000:5000"
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
