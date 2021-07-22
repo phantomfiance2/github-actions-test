@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
       procps \
       gdbserver
 WORKDIR /root
+# testing 2 lines
+RUN pwd
+RUN ls -la
 COPY nginx-$nginx_version nginx-$nginx_version
 RUN cd nginx-${nginx_version} && ./configure \
       --prefix=/etc/nginx/sbin/ \
