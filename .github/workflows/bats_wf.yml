@@ -1,9 +1,9 @@
 name: "Bats tests CI"
 on:
   push:
-    branches: [ main ]
+    branches: [ testBats ]
   pull_request:
-    branches: [ main ]
+    branches: [ testBats ]
 
 
 jobs:
