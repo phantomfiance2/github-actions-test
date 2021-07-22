@@ -2,9 +2,6 @@
 FROM debian:stretch-slim
 ARG nginx_version
 ARG module_name
-# testing
-RUN echo "check build args passed in:"
-RUN echo $nginx_version $mdockerfile odule_name 
 RUN apt-get update && apt-get install -y \
       gcc \
       libpcre3 \
@@ -17,9 +14,6 @@ RUN apt-get update && apt-get install -y \
       procps \
       gdbserver
 WORKDIR /root
-# testing 2 lines
-RUN pwd
-RUN ls -la
 COPY ./nginx-$nginx_version nginx-$nginx_version
 RUN cd nginx-${nginx_version} && ./configure \
       --prefix=/etc/nginx/sbin/ \
@@ -34,6 +28,6 @@ RUN cd nginx-${nginx_version} && ./configure \
 RUN cd nginx-$nginx_version && ./configure --with-compat --add-dynamic-module=moduleSrc/$module_name && make modules
 RUN mkdir -p /usr/local/sbin/modules/
 RUN cp /root/nginx-$nginx_version/objs/*so  /usr/local/sbin/modules/
-COPY myentrypoint.sh /myentrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 COPY nginx.conf /nginx.conf
-ENTRYPOINT [ "/myentrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]

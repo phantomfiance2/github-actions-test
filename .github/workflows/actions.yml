@@ -1,43 +1,30 @@
-name: My Own Docker CI 
+name: build Nginx with dynamic module CI 
 
 on:
   push:
-    branches: [ main ]
+    branches: [ cleanup_br ]
   pull_request:
-    branches: [ main ]
+    branches: [ cleanup_br ]
 
 jobs:
   run-bash-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my first step - echoing
-        run: echo "I am about to run command from within container using my own iamge!"
-
-      - name: List Files before checkout my repo
+      - name: List files before checkout repo
         run: |
-          echo "pwd:"
           pwd
           ls -la
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY 
           echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
-          echo "/ dir:"
           ls -la /
-
-      - name: check out my repo
+      - name: Check out repo
         uses: actions/checkout@v2
-
-      - name: List Files after checkout my repo
+      - name: List files after checkout repo
         run: |
-          echo "pwd:"
           pwd
           ls -la
-          echo "/ dir:"
           ls -la /
+      - name: Build and run docker container
+        run: ./.github/actions/dynamic-module-docker/build.sh 1.21.1 ngx_mirror
 
-      - name: my real run docker container with dynamic module
-        run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
-        # with:
-        #   who-to-greet: "MyTestingWorldLALALALALALAL"
-        # should use my actio.yml in hello-docker and pass 1.21.1 ./ngx_mirror as env in action.yml

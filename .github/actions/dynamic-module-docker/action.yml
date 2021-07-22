@@ -1,0 +1,10 @@
+# TODO: Build args currently not yet supported in Docker container actions
+# should remove build.sh and use the following docker container github actions with "build-args"
+
+name: Dynamic module action
+author: CAS
+description: Nginx dynamic module docker container action
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  # build-args: 
