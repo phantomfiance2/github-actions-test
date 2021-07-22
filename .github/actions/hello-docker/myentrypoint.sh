@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Hello $1"
+echo "Hello - testing nginx with mirror dynamic module"
 echo "inside docker container:: uname -a"
 uname -a
 echo "inside docker container:: Starting nginx"

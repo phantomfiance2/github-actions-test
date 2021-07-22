@@ -36,7 +36,8 @@ jobs:
           echo "/ dir:"
           ls -la /
 
-      - name: my real run docker container
-        uses: ./.github/actions/hello-docker
-        with:
-          who-to-greet: "MyTestingWorldLALALALALALAL"
+      - name: my real run docker container with dynamic module
+        run: ./.github/action/hello-docker/build.sh 1.21.1 ./ngx_mirror
+        # with:
+        #   who-to-greet: "MyTestingWorldLALALALALALAL"
+        # should use my actio.yml in hello-docker and pass 1.21.1 ./ngx_mirror as env in action.yml
