@@ -21,4 +21,4 @@ then
 fi
 cp -r $moduleFolder $nginxFullName/moduleSrc/
 echo "just before running docker-compose"
-docker-compose build --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion 2>/dev/null
+# docker-compose build --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion 2>/dev/null
