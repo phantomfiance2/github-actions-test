@@ -20,7 +20,7 @@ WORKDIR /root
 # testing 2 lines
 RUN pwd
 RUN ls -la
-COPY nginx-$nginx_version nginx-$nginx_version
+COPY /home/runner/work/github-actions-test/github-actions-test/nginx-$nginx_version nginx-$nginx_version
 RUN cd nginx-${nginx_version} && ./configure \
       --prefix=/etc/nginx/sbin/ \
       --sbin-path=/usr/local/sbin \
