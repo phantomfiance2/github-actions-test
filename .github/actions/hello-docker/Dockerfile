@@ -2,6 +2,9 @@
 FROM debian:stretch-slim
 ARG nginx_version
 ARG module_name
+# testing
+RUN echo "check build args passed in:"
+RUN echo $nginx_version $module_name 
 RUN apt-get update && apt-get install -y \
       gcc \
       libpcre3 \
