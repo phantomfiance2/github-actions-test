@@ -6,10 +6,10 @@
 }
 
 
-@test "addition using dc" {
-  result="$(echo 2 2+p | dc)"
-  [ "$result" -eq 4 ]
-}
+# @test "addition using dc" {
+#   result="$(echo 2 2+p | dc)"
+#   [ "$result" -eq 4 ]
+# }
 
 @test "subtraction using bc" {
   result="$(echo 2-1 | bc)"
@@ -18,5 +18,5 @@
 
 @test "mutiplication using bc" {
   result="$(echo 2*3 | bc)"
-  [ "$result" -eq 6 ]
+  [ "$result" -eq 7 ]
 }
