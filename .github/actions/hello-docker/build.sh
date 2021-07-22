@@ -34,12 +34,13 @@ cp -r $moduleFolder $nginxFullName/moduleSrc/
 
 echo "after copy ngx_mirror folder content, pwd:"
 pwd
-ls -la
+echo "list content in copied nginx module folder:"
+ls -la $nginxFullName/moduleSrc/
 
 echo "just before running docker-compose"
 # docker-compose build --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion 2>/dev/null
-cd ./.github/actions/hello-docker/.
+# cd ./.github/actions/hello-docker/.
 echo "current pwd:"
 pwd
 ls -la
-docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion . && docker run docker-action
+docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion ./.github/actions/hello-docker/. && docker run docker-action
