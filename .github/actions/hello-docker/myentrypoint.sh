@@ -1,6 +1,12 @@
 #!/bin/sh
 
 echo "Hello $1"
+echo "inside docker container:: uname -a"
+uname -a
+echo "inside docker container:: Starting nginx"
+/usr/local/sbin/nginx -c /nginx.conf
+echo "inside docker container:: ps -ef"
+ps -ef
 echo "inside docker container:: pwd"
 pwd
 ls -la

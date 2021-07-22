@@ -24,4 +24,5 @@ RUN cd nginx-1.21.1 && ./configure \
       --with-cc-opt='-O0 -g' && \
     make && make install
 COPY myentrypoint.sh /myentrypoint.sh
+COPY nginx.conf /nginx.conf
 ENTRYPOINT [ "/myentrypoint.sh" ]
