@@ -39,8 +39,14 @@ ls -la $nginxFullName/moduleSrc/ngx_mirror/
 
 echo "just before running docker-compose"
 # docker-compose build --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion 2>/dev/null
+
+# hack - in order to let docker build context to be ./.github/actions/hello-docker/
+cp -r $nginxFullName ./.github/actions/hello-docker/.
+
 cd ./.github/actions/hello-docker/.
 echo "current pwd:"
 pwd
 ls -la
+
+
 docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion . && docker run docker-action

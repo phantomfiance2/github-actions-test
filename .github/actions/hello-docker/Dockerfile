@@ -4,7 +4,7 @@ ARG nginx_version
 ARG module_name
 # testing
 RUN echo "check build args passed in:"
-RUN echo $nginx_version $module_name 
+RUN echo $nginx_version $mdockerfile odule_name 
 RUN apt-get update && apt-get install -y \
       gcc \
       libpcre3 \
@@ -20,7 +20,7 @@ WORKDIR /root
 # testing 2 lines
 RUN pwd
 RUN ls -la
-COPY /home/runner/work/github-actions-test/github-actions-test/nginx-$nginx_version nginx-$nginx_version
+COPY ./nginx-$nginx_version nginx-$nginx_version
 RUN cd nginx-${nginx_version} && ./configure \
       --prefix=/etc/nginx/sbin/ \
       --sbin-path=/usr/local/sbin \
