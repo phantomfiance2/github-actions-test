@@ -22,4 +22,4 @@ fi
 cp -r $moduleFolder $nginxFullName/moduleSrc/
 echo "just before running docker-compose"
 # docker-compose build --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion 2>/dev/null
-docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion . && docker run docker-action
+docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion ./.github/actions/hello-docker/. && docker run docker-action
