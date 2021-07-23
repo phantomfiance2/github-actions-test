@@ -33,7 +33,7 @@ teardown_file() {
   run build.sh 1.21.1 ngx_mirror
   assert_output --partial 'ngx_mirror'
   assert_output --partial 'nginx-1.21.1'
-  assert_file_exist $DIR/../../src/DynamicModule/build.sh
+  # assert_file_exist $DIR/../../src/DynamicModule/build.sh
   assert_dir_exist $DIR/../../bin
   assert_file_exist $DIR/../../nginx-1.21.1.tar.gz
   assert_dir_exist $DIR/../../nginx-1.21.1
