@@ -48,13 +48,16 @@ jobs:
         run: |
           pwd
           ls -la
-          # echo "ls -la test/* :"
-          # ls -la test/*
-          git submodule add https://github.com/bats-core/bats-support.git test/test_helper/bats-support
-          git submodule add https://github.com/bats-core/bats-assert.git test/test_helper/bats-assert
-          git submodule add https://github.com/bats-core/bats-file.git test/test_helper/bats-file
-          # ls -la .git/modules/*
-          ls -l test/*
+          echo "ls -la test/DynamicModule/* :"
+          ls -la test/DynamicModule/*
+          echo "######"
+          git submodule add https://github.com/bats-core/bats-support.git test/DynamicModule/test_helper/bats-support
+          git submodule add https://github.com/bats-core/bats-assert.git test/DynamicModule/test_helper/bats-assert
+          git submodule add https://github.com/bats-core/bats-file.git test/DynamicModule/test_helper/bats-file
+          echo "######"
+          ls -la .git/modules/*
+          echo "######"
+          ls -l test/DynamicModule/*
           
       - name: Test
         run: bats ./test/DynamicModule/test1.bats
