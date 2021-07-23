@@ -30,6 +30,7 @@ jobs:
           git submodule add https://github.com/bats-core/bats-assert.git test/test_helper/bats-assert
           git submodule add https://github.com/bats-core/bats-file.git test/test_helper/bats-file
           ls -la .git/modules/*
+          ls -la tests/*
 
       - name: Test
         run: bats ./tests/test1.bats
