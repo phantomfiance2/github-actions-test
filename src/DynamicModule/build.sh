@@ -12,6 +12,9 @@ then
 fi
 wget https://nginx.org/download/$nginxFullName.tar.gz -O $nginxFullName.tar.gz
 tar -xvf $nginxFullName.tar.gz
+echo "after download tar.gz, pwd:"
+pwd
+ls -la
 if [ ! -d "$nginxFullName/moduleSrc" ]
 then
   mkdir $nginxFullName/moduleSrc/
