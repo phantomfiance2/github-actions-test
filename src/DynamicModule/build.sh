@@ -19,7 +19,11 @@ if [ ! -d "$nginxFullName/moduleSrc" ]
 then
   mkdir $nginxFullName/moduleSrc/
 fi
-cp -r $moduleFolder $nginxFullName/moduleSrc/
+cp -r ./$moduleFolder $nginxFullName/moduleSrc/
+echo "after copy ngx_mirror folder content, pwd:"
+pwd
+echo "list content in copied nginx module folder:"
+ls -la $nginxFullName/moduleSrc/ngx_mirror/
 # let docker build context to be ./.github/actions/dynamic-module-docker/
-cp -r $nginxFullName ./.github/actions/dynamic-module-docker/.
-cd ./.github/actions/dynamic-module-docker/.
+# cp -r ./$nginxFullName ./.github/actions/dynamic-module-docker/
+# cd ./.github/actions/dynamic-module-docker/
