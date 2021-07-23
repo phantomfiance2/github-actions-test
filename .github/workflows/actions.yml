@@ -57,7 +57,7 @@ jobs:
           ls -l test/*
           
       - name: Test
-        run: bats ./test/test1.bats
+        run: bats ./test/DynamicModule/test1.bats
 
       # - name: my real run docker container with dynamic module
       #   # run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
