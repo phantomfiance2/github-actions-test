@@ -32,4 +32,4 @@ jobs:
           ls -la .git/modules/*
 
       - name: Test
-        run: bats ./test/test1.bats
+        run: bats ./tests/test1.bats
