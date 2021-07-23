@@ -1,6 +1,6 @@
 #!/bin/bash
 nginxVersion=$1;
-nginxFullName=nginx-$nginxVersion
+# nginxFullName=nginx-$nginxVersion
 moduleFolder=$2;
 moduleName=$(basename "${moduleFolder}")
 
