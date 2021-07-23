@@ -30,7 +30,7 @@ if [ ! -d "$nginxFullName/moduleSrc" ]
 then
   mkdir $nginxFullName/moduleSrc/
 fi
-cp -r ./src/$moduleFolder $nginxFullName/moduleSrc/
+cp -r ./$moduleFolder $nginxFullName/moduleSrc/
 
 echo "after copy ngx_mirror folder content, pwd:"
 pwd
