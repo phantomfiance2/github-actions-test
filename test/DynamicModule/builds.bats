@@ -38,14 +38,16 @@ teardown_file() {
   assert_file_exist $DIR/../../nginx-1.21.1.tar.gz
   assert_dir_exist $DIR/../../nginx-1.21.1
   assert_dir_exist $DIR/../../nginx-1.21.1/moduleSrc
-}
-
-
-@test "testing docker-build.sh" {
-  run docker-build.sh 1.21.1 ngx_mirror
   assert_output --partial 'Successfully built'
   assert_output --partial 'Successfully tagged'
 }
+
+
+# @test "testing docker-build.sh" {
+#   run docker-build.sh 1.21.1 ngx_mirror
+#   assert_output --partial 'Successfully built'
+#   assert_output --partial 'Successfully tagged'
+# }
 
 
 # @test "addition using bc" {
