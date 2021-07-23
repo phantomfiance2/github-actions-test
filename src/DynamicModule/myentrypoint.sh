@@ -12,3 +12,5 @@ pwd
 ls -la
 echo "inside docker container:: /"
 ls -la /
+echo "Listing all .so files:"
+ls -la /usr/local/sbin/modules/*.so
