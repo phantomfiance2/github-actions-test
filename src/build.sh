@@ -50,5 +50,7 @@ ls -la
 
 
 # docker build -t docker-action --build-arg module_name=$moduleName --build-arg nginx_version=$nginxVersion . && docker run docker-action
+# ./docker-build.sh $moduleName $nginxVersion
 
 ###### need to copy build.sh into src folder for bats script testing"
+### or even without copying?? but need to split build.sh into non-docker-build and docker build two sh files and test the non-docker part
