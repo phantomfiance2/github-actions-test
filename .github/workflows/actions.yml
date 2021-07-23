@@ -15,6 +15,11 @@ jobs:
       - name: my first step - echoing
         run: echo "I am about to run command from within container using my own iamge!"
 
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.2.1
+ 
       - name: List Files before checkout my repo
         run: |
           echo "pwd:"
@@ -37,6 +42,22 @@ jobs:
           ls -la
           echo "/ dir:"
           ls -la /
+
+      # put into a script!!!!!
+      - name: install bats submodule for testing support from git
+        run: |
+          pwd
+          ls -la
+          # echo "ls -la test/* :"
+          # ls -la test/*
+          git submodule add https://github.com/bats-core/bats-support.git test/test_helper/bats-support
+          git submodule add https://github.com/bats-core/bats-assert.git test/test_helper/bats-assert
+          git submodule add https://github.com/bats-core/bats-file.git test/test_helper/bats-file
+          # ls -la .git/modules/*
+          ls -l test/*
+          
+      - name: Test
+        run: bats ./test/test1.bats
 
       - name: my real run docker container with dynamic module
         # run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
