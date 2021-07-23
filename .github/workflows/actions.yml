@@ -2,9 +2,11 @@ name: My Own Docker CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ testBats ]
+    # branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ testBats ]
+    # branches: [ main ]
 
 jobs:
   run-bash-job:
