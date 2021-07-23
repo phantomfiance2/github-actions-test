@@ -38,8 +38,6 @@ teardown_file() {
   assert_file_exist $DIR/../../nginx-1.21.1.tar.gz
   assert_dir_exist $DIR/../../nginx-1.21.1
   assert_dir_exist $DIR/../../nginx-1.21.1/moduleSrc
-  assert_output --partial 'Successfully built'
-  assert_output --partial 'Successfully tagged'
 }
 
 
