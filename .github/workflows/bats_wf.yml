@@ -20,5 +20,10 @@ jobs:
       - name: Check out my repo
         uses: actions/checkout@v2
 
+      - name: install bats module for testing from git
+        run: |
+          pwd
+          ls -la
+
       - name: Test
         run: bats -r .
