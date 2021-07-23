@@ -24,6 +24,7 @@ jobs:
         run: |
           pwd
           ls -la
+          ls -la .git/module/*
 
       - name: Test
         run: bats -r .
