@@ -15,7 +15,7 @@ setup() {
     # as those will point to the bats executable's location or the preprocessed file respectively
     DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
     # make executables in src/ visible to PATH
-    PATH="$DIR/../src/DynamicModule:$PATH"
+    PATH="$DIR/../../src/DynamicModule:$PATH"
 }
 
 
@@ -33,11 +33,11 @@ teardown_file() {
   run build.sh 1.21.1 ngx_mirror
   assert_output --partial 'ngx_mirror'
   assert_output --partial 'nginx-1.21.1'
-  assert_file_exist $DIR/../src/DynamicModule/build.sh
-  assert_dir_exist $DIR/../bin
-  assert_file_exist $DIR/../nginx-1.21.1.tar.gz
-  assert_dir_exist $DIR/../nginx-1.21.1
-  assert_dir_exist $DIR/../nginx-1.21.1/moduleSrc
+  assert_file_exist $DIR/../../src/DynamicModule/build.sh
+  assert_dir_exist $DIR/../../bin
+  assert_file_exist $DIR/../../nginx-1.21.1.tar.gz
+  assert_dir_exist $DIR/../../nginx-1.21.1
+  assert_dir_exist $DIR/../../nginx-1.21.1/moduleSrc
 }
 
 @test "addition using bc" {
