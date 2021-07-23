@@ -42,8 +42,9 @@ jobs:
         # run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
         run: |
           cp src/*.sh ./.github/actions/hello-docker/
-          ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
-          ./.github/actions/hello-docker/docker-build.sh 1.21.1 ngx_mirror
+          cd ./.github/actions/hello-docker/
+          ./build.sh 1.21.1 ngx_mirror
+          ./docker-build.sh 1.21.1 ngx_mirror
         # with:
         #   who-to-greet: "MyTestingWorldLALALALALALAL"
         # should use my actio.yml in hello-docker and pass 1.21.1 ./ngx_mirror as env in action.yml
