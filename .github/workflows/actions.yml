@@ -41,7 +41,7 @@ jobs:
       - name: my real run docker container with dynamic module
         # run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
         run: |
-          cp -r ./src/* ./.github/actions/hello-docker/
+          cp -r ./src/DynamicModule/* ./.github/actions/hello-docker/
           cd ./.github/actions/hello-docker/
           ./build.sh 1.21.1 ngx_mirror
           ./docker-build.sh 1.21.1 ngx_mirror
