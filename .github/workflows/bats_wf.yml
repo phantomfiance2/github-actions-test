@@ -24,13 +24,13 @@ jobs:
         run: |
           pwd
           ls -la
-          echo "ls -la test/* :"
-          ls -la test/*
+          # echo "ls -la test/* :"
+          # ls -la test/*
           git submodule add https://github.com/bats-core/bats-support.git test/test_helper/bats-support
           git submodule add https://github.com/bats-core/bats-assert.git test/test_helper/bats-assert
           git submodule add https://github.com/bats-core/bats-file.git test/test_helper/bats-file
-          ls -la .git/modules/*
-          ls -la test/*
+          # ls -la .git/modules/*
+          ls -l test/*
 
       - name: Test
         run: bats ./test/test1.bats
