@@ -1,75 +1,29 @@
-name: My Own Docker CI 
+name: build Nginx with dynamic module CI 
 
 on:
   push:
-    branches: [ testBats ]
-    # branches: [ main ]
+    branches: [ testBatsCleanup ]
   pull_request:
-    branches: [ testBats ]
-    # branches: [ main ]
+    branches: [ testBatsCleanup ]
 
 jobs:
-  run-bash-job:
+  build-nginx-with-dynamic-module-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my first step - echoing
-        run: echo "I am about to run command from within container using my own iamge!"
-
-      - name: Setup BATS
-        uses: mig4/setup-bats@v1
-        with:
-          bats-version: 1.2.1
- 
-      - name: List Files before checkout my repo
-        run: |
-          echo "pwd:"
-          pwd
-          ls -la
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY 
-          echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
-          echo "/ dir:"
-          ls -la /
-
-      - name: check out my repo
+      - name: Check out repo
         uses: actions/checkout@v2
-
-      - name: List Files after checkout my repo
+      - name: Install bats submodules from git for testing support
         run: |
-          echo "pwd:"
-          pwd
-          ls -la
-          echo "/ dir:"
-          ls -la /
-
-      # put into a script!!!!!
-      - name: install bats submodule for testing support from git
-        run: |
-          pwd
-          ls -la
-          echo "ls -la test/DynamicModule/* :"
-          ls -la test/DynamicModule/*
-          echo "######"
           git submodule add https://github.com/bats-core/bats-support.git test/DynamicModule/test_helper/bats-support
           git submodule add https://github.com/bats-core/bats-assert.git test/DynamicModule/test_helper/bats-assert
           git submodule add https://github.com/bats-core/bats-file.git test/DynamicModule/test_helper/bats-file
-          echo "######"
-          ls -la .git/modules/*
-          echo "######"
-          ls -l test/DynamicModule/*
-          
       - name: Unit Test
         run: |
-          bats ./test/DynamicModule/builds.bats
-
-      - name: my real run docker container with dynamic module
-        # run: ./.github/actions/hello-docker/build.sh 1.21.1 ngx_mirror
+          bats ./test/DynamicModule
+      - name: Build and run docker container
         run: |
-          cp -r ./src/DynamicModule/* ./.github/actions/hello-docker/
-          cd ./.github/actions/hello-docker/
+          cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
+          cd ./.github/actions/dynamic-module-docker/
           ./build.sh 1.21.1 ngx_mirror
           ./docker-build.sh 1.21.1 ngx_mirror
-        # with:
-        #   who-to-greet: "MyTestingWorldLALALALALALAL"
-        # should use my actio.yml in hello-docker and pass 1.21.1 ./ngx_mirror as env in action.yml
+          
