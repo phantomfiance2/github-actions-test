@@ -28,11 +28,11 @@ jobs:
       - name: Unit Test
         run: |
           bats ./test/DynamicModule
-      # - name: Build and run docker container
-      #   run: |
-      #     cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
-      #     cd ./.github/actions/dynamic-module-docker/
-      #     ./build.sh $nginxVersion ngx_mirror
-      #     ./docker-build.sh $nginxVersion ngx_mirror
-      #   env:
-      #     nginxVersion: 1.21.1
+      - name: Build and run docker container
+        run: |
+          cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
+          cd ./.github/actions/dynamic-module-docker/
+          ./build.sh $nginxVersion ngx_mirror
+          ./docker-build.sh $nginxVersion ngx_mirror
+        env:
+          nginxVersion: 1.21.1
