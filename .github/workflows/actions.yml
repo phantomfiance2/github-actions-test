@@ -28,6 +28,7 @@ jobs:
         run: |
           cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
           cd ./.github/actions/dynamic-module-docker/
-          ./build.sh 1.21.1 ngx_mirror
-          ./docker-build.sh 1.21.1 ngx_mirror
-          
+          ./build.sh $nginxVersion ngx_mirror
+          ./docker-build.sh $nginxVersion ngx_mirror
+        env:
+          nginxVersion: 1.21.1
