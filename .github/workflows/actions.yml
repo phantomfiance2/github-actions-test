@@ -21,14 +21,18 @@ jobs:
           git submodule add https://github.com/bats-core/bats-support.git test/DynamicModule/test_helper/bats-support
           git submodule add https://github.com/bats-core/bats-assert.git test/DynamicModule/test_helper/bats-assert
           git submodule add https://github.com/bats-core/bats-file.git test/DynamicModule/test_helper/bats-file
+      - name: Linting and static analysis 
+        uses: fearphage/shellcheck-action@0.0.4
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Unit Test
         run: |
           bats ./test/DynamicModule
-      - name: Build and run docker container
-        run: |
-          cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
-          cd ./.github/actions/dynamic-module-docker/
-          ./build.sh $nginxVersion ngx_mirror
-          ./docker-build.sh $nginxVersion ngx_mirror
-        env:
-          nginxVersion: 1.21.1
+      # - name: Build and run docker container
+      #   run: |
+      #     cp -r ./src/DynamicModule/* ./.github/actions/dynamic-module-docker/
+      #     cd ./.github/actions/dynamic-module-docker/
+      #     ./build.sh $nginxVersion ngx_mirror
+      #     ./docker-build.sh $nginxVersion ngx_mirror
+      #   env:
+      #     nginxVersion: 1.21.1
