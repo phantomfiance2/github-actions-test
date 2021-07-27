@@ -22,9 +22,9 @@ jobs:
           git submodule add https://github.com/bats-core/bats-assert.git test/DynamicModule/test_helper/bats-assert
           git submodule add https://github.com/bats-core/bats-file.git test/DynamicModule/test_helper/bats-file
       - name: Linting and static analysis 
-        uses: fearphage/shellcheck-action@0.0.4
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: './src/DynamicModule/'
       - name: Unit Test
         run: |
           bats ./test/DynamicModule
